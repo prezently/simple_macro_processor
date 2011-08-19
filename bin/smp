@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+puts __FILE__
+require 'simple_macro_processor'
+
+# TODO use proper opts passing
+variable_file    = ARGV[0]
+source_file      = ARGV[1]
+destination_file = ARGV[2]
+
+# TODO set these values through opts
+force_overwrite = false
+silent = false
+
+if File.exists?(destination_file) && !force_overwrite
+  puts "Destination file will be overwrite existing file. Okay?\n"
+  print "y\n: "
+  response = gets
+  if response.chomp != 'y'
+    puts "exiting..."
+    exit(0)
+  end
+end
+
+t0 = Time.now
+coordinator = SimpleMacroProcessor::Coordinator.new(variable_file,
+                                                    source_file,
+                                                    destination_file)
+
+coordinator.process
+t1 = Time.now
+
+if !silent
+  time_elapsed = t1 - t0
+  stats = coordinator.stats
+  puts "Time to process\t#{time_elapsed}s"
+  puts "Lines Processed\t#{stats[:num_lines_processed]}"
+  if !stats[:unused_variables].empty?
+    puts "Unused Variables\t#{stats[:unused_variables].to_a.join(', ')}"
+  end
+  if !stats[:missing_variables].empty?
+    puts "Missing Variables\t#{stats[:missing_variables].to_a.join(', ')}"
+  end
+end

@@ -1,0 +1,4 @@
+this is a source file with uninterpolated values in it
+the values should be replace by !<<program_name>>, which I'll repeat: !<<program_name>>.
+this was originally created by !<<author>> on !<<created_on>>
+the reason for it's creation is !<<reason>>

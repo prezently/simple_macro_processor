@@ -1,0 +1,4 @@
+program_name: simple_macro_processor
+author: andrew chase
+created_on: 8/19/2011
+reason: not every config file offers it's own variable substitution but every user of config wants that feature
