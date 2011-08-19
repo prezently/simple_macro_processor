@@ -1,12 +1,21 @@
 #!/usr/bin/env ruby
 
 puts __FILE__
-require 'simple_macro_processor'
+require 'lib/simple_macro_processor'
 
 # TODO use proper opts passing
 variable_file    = ARGV[0]
 source_file      = ARGV[1]
 destination_file = ARGV[2]
+
+puts "args: #{variable_file} - #{source_file} - #{destination_file}"
+
+# TODO include library to allow access to the #blank? method
+#if variable_file.blank? || source_file.blank? || destination_file.blank?
+if variable_file.nil? || source_file.nil? || destination_file.nil?
+  puts "Must provide three arguments: variable file, source file, destination file"
+  exit(0)
+end
 
 # TODO set these values through opts
 force_overwrite = false
@@ -14,11 +23,15 @@ silent = false
 
 if File.exists?(destination_file) && !force_overwrite
   puts "Destination file will be overwrite existing file. Okay?\n"
-  print "y\n: "
-  response = gets
+  print "[yN]: "
+  # TODO why isn't this working?
+  # response = gets
+  response = "y"
   if response.chomp != 'y'
-    puts "exiting..."
+    puts "\nexiting..."
     exit(0)
+  else
+    puts ""
   end
 end
 

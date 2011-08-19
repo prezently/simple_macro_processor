@@ -40,6 +40,7 @@ module SimpleMacroProcessor
         variable_value = $2.strip
         hash[variable_name] = variable_value
       end
+      hash
     end
   end
 end

@@ -1,4 +1,5 @@
 this is a source file with uninterpolated values in it
-the values should be replace by !<<program_name>>, which I'll repeat: !<<program_name>>.
+the values should be replaced by the program !<<program_name>>, which I'll repeat: !<<program_name>>.
 this was originally created by !<<author>> on !<<created_on>>
 the reason for it's creation is !<<reason>>
+test using mutliple !<<thing>>s on one !<<other_thing>> because multiple !<<thing>>s can be tricky for a single !<<other_thing>>... !<<meow>>

@@ -5,7 +5,7 @@ module SimpleMacroProcessor
                  :source_fd, :source_file,
                  :destination_fd, :destination_file)
     
-    def initialize(variable_fd, source_fd, destintation_fd)
+    def initialize(variable_fd, source_fd, destination_fd)
       @variable_fd      = variable_fd
       @variable_file    = File.open(variable_fd, "r")
       @source_fd        = source_fd
@@ -17,7 +17,7 @@ module SimpleMacroProcessor
     def process
       @num_lines_processed = 0
       source_file.readlines.each do |line|
-        @num_lines_processed += 0
+        @num_lines_processed += 1
         destination_file.puts line_processor.interpolate_line(line)
       end
     end
@@ -32,7 +32,7 @@ module SimpleMacroProcessor
     private
      
     def unused_variables
-      variable_holder.variable_hash.keys - line_processor.excercised_variables
+      variable_holder.variable_hash.keys - line_processor.excercised_variables.to_a
     end
 
     def variable_holder

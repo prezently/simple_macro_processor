@@ -1,4 +1,9 @@
 program_name: simple_macro_processor
+# comments will be ignored
 author: andrew chase
 created_on: 8/19/2011
+# foobar
 reason: not every config file offers it's own variable substitution but every user of config wants that feature
+thing: variable
+other_thing: line
+meow: meow!

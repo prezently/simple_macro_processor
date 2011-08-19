@@ -22,13 +22,13 @@ module SimpleMacroProcessor
     
     def interpolate_line(line)
       self.class.variables_in_line(line).each do |variable|
-        if !variable_reader.has_key?(variable)
+        if !variable_holder.has_key?(variable)
           missing_variables.add(variable)
           next
         end
         excercised_variables.add(variable)
-        value = variable_reader.value(variable)
-        line.gsub!(/#{PATTERN_START}.*?#{PATTERN_END}/, value)
+        value = variable_holder.value(variable)
+        line.gsub!(/#{PATTERN_START}#{variable}#{PATTERN_END}/, value)
       end
       line
     end
