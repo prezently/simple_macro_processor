@@ -1,0 +1,7 @@
+program_name: simple_macro_processor
+# comments will be ignored
+author: andrew chase
+# foobar
+reason: not every config file offers it's own variable substitution but every user of config wants that feature
+thing: variable
+other_thing: line
